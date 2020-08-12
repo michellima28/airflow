@@ -51,7 +51,7 @@ vim $AIRFLOW_HOME/airflow.cfg
 ### alter configurations
 executor = LocalExecutor
 
-sql_alchemy_conn = postgresql+psycopg2://dbuser:Y@smin2019@localhost/testdb
+sql_alchemy_conn = postgresql+psycopg2://user:password@host/database
 
 load_examples = False
 
