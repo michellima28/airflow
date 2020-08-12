@@ -68,7 +68,7 @@ sudo apt-get install libpq-dev
 sudo pip3 install psycopg2
 
 ### create a specific directory for airflow
-export AIRFLOW_HOME=/airflow
+export AIRFLOW_HOME=/root/airflow
 
 sudo mkdir $AIRFLOW_HOME
 
