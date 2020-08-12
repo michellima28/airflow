@@ -45,6 +45,10 @@ psql -l
 
 # installing and configuring airflow
 ### update ubuntu packages
+sudo su -
+
+cd /
+
 sudo apt-get update
 
 ### export environment variables
