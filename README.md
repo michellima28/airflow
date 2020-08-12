@@ -95,11 +95,11 @@ airflow initdb
 airflow webserver -p 80
 
 # references
-###postgresql installation
+### postgresql installation
 
 https://computingforgeeks.com/installing-postgresql-database-server-on-ubuntu/
 
-###airflow installation and configuration
+### airflow installation and configuration
 
 https://medium.com/data-hackers/primeiros-passos-com-o-apache-airflow-etl-f%C3%A1cil-robusto-e-de-baixo-custo-f80db989edae
 
