@@ -1,22 +1,31 @@
 # airflow
 Personal projects using Apache Airlfow to develop data pipeline.
 
-## prerequisites
+# prerequisites
 I installed this application on Ubuntu 20.04 and to do so, first I installed PostgreSQL
 
-## installing postgresql
+# installing postgresql
 
-## installing and configuring airflow
+# installing and configuring airflow
 ### update ubuntu packages
 sudo su
+
+
 cd ~
+
+
 sudo apt-get update
 
-# export environment variables
+
+#### export environment variables
 export SLUGIFY_USES_TEXT_UNIDECODE=yes
+
 export LC_ALL=”en_US.UTF-8"
+
 export LC_CTYPE=”en_US.UTF-8"
+
 sudo dpkg-reconfigure locales
+
 
 # install psycopg to connect to a database
 sudo apt install python3-pip
