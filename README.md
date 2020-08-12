@@ -23,7 +23,7 @@ sudo su - postgres
 
 psql -c "alter user postgres with password 'your_password'"
 
-try creating a test database and user:
+### try creating a test database and user
 
 createuser dbuser
 
@@ -35,7 +35,7 @@ alter user dbuser with password 'StrongPassword';
 
 \q
 
-list created databases:
+### list created databases
 
 psql -l
 
