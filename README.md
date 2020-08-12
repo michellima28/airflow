@@ -60,3 +60,17 @@ airflow initdb
 
 ### start webserver on port 80
 airflow webserver -p 80
+
+### references
+postgresql installation
+
+https://computingforgeeks.com/installing-postgresql-database-server-on-ubuntu/
+
+airflow installation and configuration
+
+https://medium.com/data-hackers/primeiros-passos-com-o-apache-airflow-etl-f%C3%A1cil-robusto-e-de-baixo-custo-f80db989edae
+
+https://medium.com/@taufiq_ibrahim/apache-airflow-installation-on-ubuntu-ddc087482c14
+
+https://stackoverflow.com/questions/57668584/airflow-scheduler-does-not-appear-to-be-running-after-excute-a-task
+
