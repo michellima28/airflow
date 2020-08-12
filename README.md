@@ -2,7 +2,11 @@
 Personal projects using Apache Airlfow to develop data pipeline.
 
 # prerequisites
-I installed this application on Ubuntu 20.04 and to do so, first I installed PostgreSQL
+Ubuntu 20.04
+
+PostgreSQL
+
+Python 3
 
 # installing postgresql
 ### update yout system
