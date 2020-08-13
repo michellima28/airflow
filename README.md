@@ -1,12 +1,21 @@
 # airflow
-Personal projects using Apache Airlfow to develop data pipeline.
+personal projects using Apache Airlfow to develop data pipeline.
 
 # prerequisites
-Ubuntu 20.04
+ubuntu 20.04
 
-PostgreSQL
+postgreSQL
 
-Python 3
+python 3
+
+# directories
+theses are default folders set to store dags, scripts and configuration file
+
+conf file: /root/airflow/airflow.cfg 
+
+dags: /root/airflow/dags
+
+scripts: /root/airflow/dags/etl_scripts
 
 # installing postgresql
 ### update yout system
