@@ -18,7 +18,7 @@ dags: /root/airflow/dags
 scripts: /root/airflow/dags/etl_scripts
 
 # installing postgresql
-### update yout system
+### update your system
 sudo apt update
 
 sudo apt -y upgrade
