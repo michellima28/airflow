@@ -1,15 +1,18 @@
-# airflow
-personal projects using Apache Airlfow to develop data pipeline.
+# Airflow
 
-# prerequisites
-ubuntu 20.04
+My personal projects using Apache Airlfow to develop data pipeline.
 
-postgreSQL
+## Prerequisites
 
-python 3
+Ubuntu 20.04
 
-# directories
-theses are default folders set to store dags, scripts and configuration file
+PostgreSQL
+
+Python 3
+
+## Directories
+
+These are default folders set to store dags, scripts and configuration file
 
 conf file: /root/airflow/airflow.cfg 
 
@@ -17,106 +20,182 @@ dags: /root/airflow/dags
 
 scripts: /root/airflow/dags/etl_scripts
 
-# installing postgresql
-### update your system
+## Installing PostgreSQL
+
+### Update your system
+
+```bash
 sudo apt update
+```
 
+```bash
 sudo apt -y upgrade
+```
 
-### install postgresql database server
+### Install PostgreSQL Database Server
+
+```bash
 sudo apt install postgresql postgresql-client
+```
 
-### check if server is running
-the service is automatically started upon installation, you can confirm if it is running with the command:
+### Check if server is running
 
+The service is automatically started upon installation, you can confirm if it is running with the command:
+
+```bash
 systemctl status postgresql.service
+```
 
-### update postgresql admin user's password
+### Update PostgreSQL admin user's password
+
+```bash
 sudo su - postgres
+```
 
+```bash
 psql -c "alter user postgres with password 'your_password'"
+```
 
-### try creating a test database and user
+### Try creating a test database and user
 
+```bash
 createuser dbuser
+```
 
+```bash
 createdb testdb -O dbuser
+```
 
+```bash
 psql testdb
+```
 
+```bash
 alter user dbuser with password 'StrongPassword';
+```
 
+```bash
 \q
+```
 
-### list created databases
+### List created databases
 
+```bash
 psql -l
+```
 
-# installing and configuring airflow
-### update ubuntu packages
+## Installing and configuring Airflow
+
+### Update Ubuntu packages
+
+```bash
 sudo su -
-
+```
+```bash
 cd /
+```
 
+```bash
 sudo apt-get update
+```
 
-### export environment variables
+### Export environment variables
+
+```bash
 export SLUGIFY_USES_TEXT_UNIDECODE=yes
+```
 
+```bash
 export LC_ALL=”en_US.UTF-8"
+```
 
+```bash
 export LC_CTYPE=”en_US.UTF-8"
+```
 
+```bash
 sudo dpkg-reconfigure locales
+```
 
-### install psycopg to connect to a database
+### Install psycopg to connect to a database
+
+```bash
 sudo apt install python3-pip
+```
 
+```bash
 sudo apt-get install libpq-dev
-
+```
+```bash
 sudo pip3 install psycopg2
+```
 
-### create a specific directory for airflow
+### Create a specific directory for Airflow
+
+```bash
 export AIRFLOW_HOME=/root/airflow
+```
 
+```bash
 sudo mkdir $AIRFLOW_HOME
+```
 
+```bash
 sudo chmod 777 $AIRFLOW_HOME
+```
 
+```bash
 cd $AIRFLOW_HOME
+```
 
-### install airflow
+### Install Airflow
+
+```bash
 pip3 install apache-airflow
+```
 
-### check airflow version
+### Check Airflow version
+
+```bash
 airflow version
+```
 
-### access airflow configuration file
+### Access Airflow configuration file
+
+```bash
 vim $AIRFLOW_HOME/airflow.cfg
+```
 
-### alter configurations
+### Alter configurations
+
+```bash
 executor = LocalExecutor
-
 sql_alchemy_conn = postgresql+psycopg2://user:password@host/database
-
 load_examples = False
+```
 
-### start database through airflow
+### Start database through Airflow
+
+```bash
 airflow initdb
+```
 
-### start webserver on port 80
+### Start webserver on port 80
+
+```bash
 airflow webserver -p 80
+```
 
-# references
-### postgresql installation
+## References
+
+### PostgreSQL installation
 
 https://computingforgeeks.com/installing-postgresql-database-server-on-ubuntu/
 
-### airflow installation and configuration
+### Airflow installation and configuration
 
 https://medium.com/data-hackers/primeiros-passos-com-o-apache-airflow-etl-f%C3%A1cil-robusto-e-de-baixo-custo-f80db989edae
 
 https://medium.com/@taufiq_ibrahim/apache-airflow-installation-on-ubuntu-ddc087482c14
 
 https://stackoverflow.com/questions/57668584/airflow-scheduler-does-not-appear-to-be-running-after-excute-a-task
-
