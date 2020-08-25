@@ -2,6 +2,8 @@
 
 My personal projects using Apache Airlfow to develop data pipeline.
 
+---
+
 ## Prerequisites
 
 Ubuntu 20.04
@@ -9,6 +11,8 @@ Ubuntu 20.04
 PostgreSQL
 
 Python 3
+
+---
 
 ## Directories
 
@@ -19,6 +23,8 @@ conf file: /root/airflow/airflow.cfg
 dags: /root/airflow/dags
 
 scripts: /root/airflow/dags/etl_scripts
+
+---
 
 ## Installing PostgreSQL
 
@@ -147,8 +153,9 @@ sudo chmod 777 $AIRFLOW_HOME
 ```bash
 cd $AIRFLOW_HOME
 ```
+---
 
-### Install Airflow
+## Install Airflow
 
 ```bash
 pip3 install apache-airflow
@@ -185,6 +192,7 @@ airflow initdb
 ```bash
 airflow webserver -p 80
 ```
+---
 
 ## References
 
