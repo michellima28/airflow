@@ -156,7 +156,7 @@ sudo chmod 777 $AIRFLOW_HOME
 cd $AIRFLOW_HOME
 ```
 
-# Install Airflow
+### Install Airflow
 
 ```bash
 pip3 install apache-airflow
