@@ -90,6 +90,8 @@ alter user dbuser with password 'StrongPassword';
 psql -l
 ```
 
+---
+
 ## Installing and configuring Airflow
 
 ### Update Ubuntu packages
