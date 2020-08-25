@@ -12,7 +12,7 @@ Python 3
 
 ## Directories
 
-These are default folders set to store dags, scripts and configuration file
+These are default folders set to store dags, scripts and configuration file:
 
 conf file: /root/airflow/airflow.cfg 
 
