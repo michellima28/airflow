@@ -182,6 +182,12 @@ pip3 install apache-airflow
 airflow version
 ```
 
+#### If it fails to initialise, downgrade cattrs manually to 1.0.0 to fix the issue that block Airflow database to be initialised
+
+```bash
+pip3 install cattrs==1.0.0
+```
+
 ### Access Airflow configuration file
 
 ```bash
