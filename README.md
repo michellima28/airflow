@@ -228,3 +228,7 @@ https://medium.com/data-hackers/primeiros-passos-com-o-apache-airflow-etl-f%C3%A
 https://medium.com/@taufiq_ibrahim/apache-airflow-installation-on-ubuntu-ddc087482c14
 
 https://stackoverflow.com/questions/57668584/airflow-scheduler-does-not-appear-to-be-running-after-excute-a-task
+
+### Airflow fails to start or check version
+
+https://github.com/apache/airflow/issues/11965
