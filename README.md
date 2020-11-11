@@ -142,6 +142,16 @@ sudo apt-get install libpq-dev
 sudo pip3 install psycopg2
 ```
 
+#### If you get errors in these step, try this:
+
+```bash
+sudo apt-get install python-psycopg2
+```
+
+```bash
+sudo apt-get install libpq-dev
+```
+
 ### Create a specific directory for Airflow
 
 ```bash
