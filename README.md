@@ -90,6 +90,10 @@ alter user dbuser with password 'StrongPassword';
 psql -l
 ```
 
+```bash
+exit
+```
+
 ---
 
 ## Installing and configuring Airflow
