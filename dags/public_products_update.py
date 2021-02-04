@@ -1,6 +1,6 @@
 from airflow import DAG
 from datetime import datetime, timedelta
-from airflow.operators.bash_operator import BashOperator
+from airflow.operators.bash import BashOperator
 
 default_args = {
    'owner': 'michel_lima',
@@ -11,23 +11,30 @@ default_args = {
 
 with DAG(
    'public_products-update',
-   schedule_interval=timedelta(minutes=1),
+   schedule_interval=timedelta(minutes=5),
    catchup=False,
    default_args=default_args
    ) as dag:
 
    t1 = BashOperator(
+   task_id='create_table',
+   bash_command="""
+   cd ~/airflow/dags/etl_scripts/
+   python3 public_create_table_products.py
+   """)
+
+   t2 = BashOperator(
    task_id='truncate_table',
    bash_command="""
    cd ~/airflow/dags/etl_scripts/
    python3 public_truncate_products.py
    """)
 
-   t2 = BashOperator(
+   t3 = BashOperator(
    task_id='insert_into',
    bash_command="""
    cd ~/airflow/dags/etl_scripts/
    python3 public_insert_products_data.py
    """)
 
-t1 >> t2
+t1 >> t2 >> t3

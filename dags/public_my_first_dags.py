@@ -1,6 +1,6 @@
 from airflow import DAG
 from datetime import datetime, timedelta
-from airflow.operators.bash_operator import BashOperator
+from airflow.operators.bash import BashOperator
 
 default_args = {
    'owner': 'michel_lima',
