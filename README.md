@@ -147,11 +147,17 @@ airflow users create \
     --email michelcorreialima@gmail.com
 ```
 
-### Now, access Airflow configuration file.
+### Enter in airflow directory and create dags folder
 
 ```bash
 cd ~/airflow
 ```
+
+```bash
+mkdir dags
+```
+
+### Now, access Airflow configuration file
 
 ```bash
 vim airflow.cfg
