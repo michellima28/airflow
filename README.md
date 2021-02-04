@@ -207,7 +207,7 @@ load_examples = False
 ### Start database through Airflow
 
 ```bash
-airflow initdb
+airflow db init
 ```
 
 ### Start webserver on port 80
