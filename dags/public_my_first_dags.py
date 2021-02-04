@@ -4,30 +4,31 @@ from airflow.operators.bash_operator import BashOperator
 
 default_args = {
    'owner': 'michel_lima',
-   'depends_on_past': True,
-   'start_date': datetime(2020, 8, 18),
+   'depends_on_past': False,
+   'start_date': datetime(2019, 1, 1),
    'retries': 0,
    }
 
 with DAG(
-   'products-update',
+   'public-my-first-dag',
    schedule_interval=timedelta(minutes=1),
    catchup=False,
    default_args=default_args
    ) as dag:
 
    t1 = BashOperator(
-   task_id='truncate_table',
+   task_id='first_etl',
    bash_command="""
    cd ~/airflow/dags/etl_scripts/
-   python3 truncate_products.py
+   python3 public_my_first_etl_script.py
    """)
 
    t2 = BashOperator(
-   task_id='insert_into',
+   task_id='second_etl',
    bash_command="""
    cd ~/airflow/dags/etl_scripts/
-   python3 insert_products_data.py
+   python3 public_my_second_etl_script.py
    """)
 
 t1 >> t2
+      

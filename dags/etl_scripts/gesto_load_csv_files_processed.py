@@ -7,13 +7,16 @@ try:
                                   password = "12345",
                                   host = "localhost",
                                   port = "5432",
-                                  database = "testdb")
+                                  database = "localdb")
 
     cursor = connection.cursor()
 
-    # insert data from public.contas to gesto.contas
+    # truncate
+    cursor.execute("""truncate table gesto.contas;""")
+    connection.commit()
+
+    # insert
     cursor.execute("""
-                    truncate table gesto.contas;
                     insert into gesto.contas
                     select email 
                         , "name"
@@ -27,6 +30,11 @@ try:
                     from   public.contas;
                    """)
     connection.commit()
+
+    # drop
+    cursor.execute("""drop table public.contas;""")
+    connection.commit()
+
     print("SQL command executed sucessfully!")
 
 except (Exception, psycopg2.Error) as error :

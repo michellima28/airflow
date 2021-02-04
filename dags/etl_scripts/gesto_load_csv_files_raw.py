@@ -11,5 +11,5 @@ df_contas = pd.concat(dfs,ignore_index=True)
 print(df_contas)
 
 # load dataframe data to postgres table
-engine = create_engine('postgresql://dbuser:12345@localhost:5432/testdb')
+engine = create_engine('postgresql://dbuser:12345@localhost:5432/localdb')
 df_contas.to_sql('contas', engine, if_exists='replace', index=False)

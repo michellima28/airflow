@@ -7,14 +7,19 @@ try:
                                   password = "12345",
                                   host = "localhost",
                                   port = "5432",
-                                  database = "testdb")
+                                  database = "localdb")
 
+    # init cursor method
     cursor = connection.cursor()
 
-    # truncate table
-    cursor.execute("TRUNCATE airflow_data.products;")
+    # query
+    sql_query = '''insert into public.products (id, name, price)
+                   values (17, 'smart tv sony', 3000);'''
+
+    # execute query
+    cursor.execute(sql_query)
     connection.commit()
-    print("SQL command executed sucessfully!")
+    print("Data inserted sucessfully!")
 
 except (Exception, psycopg2.Error) as error :
     print ("Error while connecting to PostgreSQL", error)

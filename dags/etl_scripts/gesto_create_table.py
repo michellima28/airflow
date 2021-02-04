@@ -7,7 +7,7 @@ try:
                                   password = "12345",
                                   host = "localhost",
                                   port = "5432",
-                                  database = "testdb")
+                                  database = "localdb")
 
     cursor = connection.cursor()
     # create schema 
