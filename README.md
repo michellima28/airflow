@@ -64,18 +64,18 @@ sudo su - postgres
 psql -c "alter user postgres with password 'admin'"
 ```
 
-### Try creating a test database and user
+### Try creating a local database and user
 
 ```bash
 createuser dbuser
 ```
 
 ```bash
-createdb testdb -O dbuser
+createdb localdb -O dbuser
 ```
 
 ```bash
-psql testdb
+psql localdb
 ```
 
 ### Type the database user's password, in this case the password is "12345", but you can choose whatever you want
