@@ -86,14 +86,14 @@ alter user dbuser with password 'StrongPassword';
 \q
 ```
 
-### List created databases
+### List created databases and then, exit
 
 ```bash
 psql -l
 ```
 
 ```bash
-exit
+ exit
 ```
 
 ---
