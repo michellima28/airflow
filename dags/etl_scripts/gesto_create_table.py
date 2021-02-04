@@ -4,12 +4,14 @@ import psycopg2
 # set postgresql connection and run sql script
 try:
     connection = psycopg2.connect(user = "dbuser",
-                                  password = "1234",
+                                  password = "12345",
                                   host = "localhost",
                                   port = "5432",
                                   database = "testdb")
 
     cursor = connection.cursor()
+    # create schema 
+    cursor.execute("""create schema if not exists gesto;""")
 
     # create table
     cursor.execute("""create table if not exists gesto.contas (
@@ -23,6 +25,7 @@ try:
   , observacao varchar(200)
   , competencia date
 );""")
+
     connection.commit()
     print("SQL command executed sucessfully!")
 

@@ -4,7 +4,7 @@ import psycopg2
 # set postgresql connection and run sql script
 try:
     connection = psycopg2.connect(user = "dbuser",
-                                  password = "Y@smin2019",
+                                  password = "12345",
                                   host = "localhost",
                                   port = "5432",
                                   database = "testdb")

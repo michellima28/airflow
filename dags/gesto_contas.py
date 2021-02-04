@@ -19,21 +19,21 @@ with DAG(
    t1 = BashOperator(
    task_id='create_table',
    bash_command="""
-   cd /root/airflow/dags/etl_scripts/
+   cd ~/airflow/dags/etl_scripts/
    python3 gesto_create_table.py
    """)
 
    t2 = BashOperator(
    task_id='load_csv_raw_data',
    bash_command="""
-   cd /root/airflow/dags/etl_scripts/
+   cd ~/airflow/dags/etl_scripts/
    python3 gesto_load_csv_files_raw.py
    """)
 
    t3 = BashOperator(
    task_id='load_csv_processed_data',
    bash_command="""
-   cd /root/airflow/dags/etl_scripts/
+   cd ~/airflow/dags/etl_scripts/
    python3 gesto_load_csv_files_processed.py
    """)
 

@@ -19,14 +19,14 @@ with DAG(
    t1 = BashOperator(
    task_id='first_etl',
    bash_command="""
-   cd /root/airflow/dags/etl_scripts/
+   cd ~/airflow/dags/etl_scripts/
    python3 my_first_etl_script.py
    """)
 
    t2 = BashOperator(
    task_id='second_etl',
    bash_command="""
-   cd /root/airflow/dags/etl_scripts/
+   cd ~/airflow/dags/etl_scripts/
    python3 my_second_etl_script.py
    """)
 

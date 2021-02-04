@@ -19,16 +19,15 @@ with DAG(
    t1 = BashOperator(
    task_id='truncate_table',
    bash_command="""
-   cd /root/airflow/dags/etl_scripts/
+   cd ~/airflow/dags/etl_scripts/
    python3 truncate_products.py
    """)
 
    t2 = BashOperator(
    task_id='insert_into',
    bash_command="""
-   cd /root/airflow/dags/etl_scripts/
+   cd ~/airflow/dags/etl_scripts/
    python3 insert_products_data.py
    """)
 
 t1 >> t2
-         
