@@ -8,11 +8,9 @@ My personal projects using Apache Airlfow to develop data pipeline.
 
 ## Prerequisites
 
-Ubuntu 20.04
+python 3
 
-PostgreSQL
-
-Python 3
+pip 3
 
 ---
 
@@ -20,11 +18,11 @@ Python 3
 
 These are default folders set to store dags, scripts and configuration file:
 
-conf file: /root/airflow/airflow.cfg 
+conf file: ~/airflow/airflow.cfg 
 
-dags: /root/airflow/dags
+dags: ~/airflow/dags
 
-scripts: /root/airflow/dags/etl_scripts
+scripts: ~/airflow/dags/etl_scripts
 
 ---
 
@@ -33,7 +31,7 @@ scripts: /root/airflow/dags/etl_scripts
 ### Update your system
 
 ```bash
-sudo apt update
+sudo apt -y update
 ```
 
 ```bash
@@ -60,8 +58,10 @@ systemctl status postgresql.service
 sudo su - postgres
 ```
 
+### Type postgres user's password, in this case the password is "admin", but you can choose whatever you want
+
 ```bash
-psql -c "alter user postgres with password 'your_password'"
+psql -c "alter user postgres with password 'admin'"
 ```
 
 ### Try creating a test database and user
@@ -78,8 +78,10 @@ createdb testdb -O dbuser
 psql testdb
 ```
 
+### Type the database user's password, in this case the password is "12345", but you can choose whatever you want
+
 ```bash
-alter user dbuser with password 'StrongPassword';
+alter user dbuser with password '12345';
 ```
 
 ```bash
@@ -96,125 +98,87 @@ psql -l
 exit
 ```
 
+### Type exit again to go out from root
+
+```bash
+exit
+```
+
 ---
 
 ## Installing and configuring Airflow
 
-### Update Ubuntu packages
-
-```bash
-sudo su -
-```
-```bash
-cd /
-```
-
-```bash
-sudo apt-get update
-```
-
-### Export environment variables
-
-```bash
-export SLUGIFY_USES_TEXT_UNIDECODE=yes
-```
-
-```bash
-export LC_ALL=”en_US.UTF-8"
-```
-
-```bash
-export LC_CTYPE=”en_US.UTF-8"
-```
-
-```bash
-sudo dpkg-reconfigure locales
-```
-
-### Install psycopg to connect to a database
-
-```bash
-sudo apt install python3-pip
-```
+### Install libpq-dev and psycopg2 to connect to a database
 
 ```bash
 sudo apt-get install libpq-dev
 ```
+
 ```bash
 sudo pip3 install psycopg2
-```
-
-#### If you get errors in these step, try this:
-
-```bash
-sudo apt-get install python-psycopg2
-```
-
-```bash
-sudo apt-get install libpq-dev
 ```
 
 ### Create a specific directory for Airflow
 
 ```bash
-export AIRFLOW_HOME=/root/airflow
+export AIRFLOW_HOME=~/airflow
 ```
 
-```bash
-sudo mkdir $AIRFLOW_HOME
-```
-
-```bash
-sudo chmod 777 $AIRFLOW_HOME
-```
-
-```bash
-cd $AIRFLOW_HOME
-```
-
-### Install Airflow
+### Install Apache Airflow
 
 ```bash
 pip3 install apache-airflow
 ```
 
-### Check Airflow version
-
-```bash
-airflow version
-```
-
-#### If it fails to initialise, downgrade cattrs manually to 1.0.0 to fix the issue that block Airflow database to be initialised
-
-```bash
-pip3 install cattrs==1.0.0
-```
-
-### Access Airflow configuration file
-
-```bash
-vim $AIRFLOW_HOME/airflow.cfg
-```
-
-### Alter configurations
-
-```bash
-executor = LocalExecutor
-sql_alchemy_conn = postgresql+psycopg2://user:password@host/database
-load_examples = False
-```
-
-### Start database through Airflow
+### Initialize database
 
 ```bash
 airflow db init
 ```
 
-### Start webserver on port 80
+### After initialization is done, create a user for Airflow WebServer. You can copy the script below and edit to put your own credentials.
+
+```bash
+airflow users create \
+    --username admin \
+    --firstname Michel \
+    --lastname Lima \
+    --role Admin \
+    --email michelcorreialima@gmail.com
+```
+
+### Now, access Airflow configuration file.
+
+```bash
+cd ~/airflow
+```
+
+```bash
+vim airflow.cfg
+```
+
+### Alter configurations inside the file. Search for the parameters below and change to the following values:
+
+```bash
+executor = LocalExecutor
+
+sql_alchemy_conn = postgresql+psycopg2://user:password@host/database
+
+load_examples = False
+```
+
+### Save and close airflow.cfg and then start webserver on port 80
 
 ```bash
 airflow webserver -p 80
 ```
+
+### Start Airflow Scheduler in another terminal window. Finally, all things are ready!
+
+```bash
+airflow scheduler
+```
+
 ---
 
 ## References
@@ -223,7 +187,11 @@ airflow webserver -p 80
 
 https://computingforgeeks.com/installing-postgresql-database-server-on-ubuntu/
 
-### Airflow installation and configuration
+### Airflow installation
+
+https://airflow.apache.org/docs/apache-airflow/stable/start.html
+
+### Airflow with Postgres
 
 https://medium.com/data-hackers/primeiros-passos-com-o-apache-airflow-etl-f%C3%A1cil-robusto-e-de-baixo-custo-f80db989edae
 
