@@ -93,7 +93,7 @@ psql -l
 ```
 
 ```bash
- exit
+exit
 ```
 
 ---
