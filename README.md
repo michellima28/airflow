@@ -1,7 +1,7 @@
 ![alt text](https://miro.medium.com/max/7200/1*NNtzqHo1jW4bHowmkWn7uA.png)
 
 ## Airflow
---
+
 My personal projects using Apache Airlfow to develop data pipeline.
 
 ## Prerequisites
@@ -21,7 +21,6 @@ dags: ~/airflow/dags
 scripts: ~/airflow/dags/etl_scripts
 
 ## Installing PostgreSQL
----
 
 ### Update your system
 
@@ -100,7 +99,6 @@ exit
 ```
 
 ## Installing and configuring Airflow
----
 
 ### Install libpq-dev and psycopg2 to connect to a database
 
