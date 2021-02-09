@@ -7,15 +7,17 @@ import shutil
 import glob
 import pandas as pd
 from sqlalchemy import create_engine
+from pathlib import Path
 
 # path variables
-path = os.getenv('PWD')
-gz_filepath = '{}/files/caso.csv.gz'.format(path)
-csv_filepath = '{}/files/caso.csv'.format(path)
+my_folder = os.getenv('PWD')
+my_parent_folder = Path(my_folder).parent
+gz_filepath = '{}/files/caso.csv.gz'.format(my_parent_folder)
+csv_filepath = '{}/files/caso.csv'.format(my_parent_folder)
 
 try:
 	# load yml file values and pass values to variables
-	creds = yaml.safe_load(open('{}/config/credentials.yml'.format(path)))
+	creds = yaml.safe_load(open('{}/config/credentials.yml'.format(my_parent_folder)))
 	v_host = creds['postgresql']['y_hostname']
 	v_database = creds['postgresql']['y_database']
 	v_user = creds['postgresql']['y_username']
