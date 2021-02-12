@@ -48,7 +48,7 @@ try:
 	p_file = glob.glob(csv_filepath)
 	dfs = [pd.read_csv(f, sep=",") for f in p_file]
 	df_covid_caso = pd.concat(dfs,ignore_index=True)
-	df_covid_caso.to_sql('covid_caso', alchemy_engine, if_exists='replace', index=False)
+	df_covid_caso.to_sql('caso', alchemy_engine, if_exists='replace', index=False)
 	os.remove(csv_filepath)
 
 	# create cursor and execure sql commands  
@@ -58,10 +58,10 @@ try:
 				create schema if not exists covid;
 
 				/* drop table*/
-				drop table if exists covid.covid_caso;
+				drop table if exists covid.caso;
 
 				/*create target table*/
-				create table covid.covid_caso 
+				create table covid.caso 
 					(
 					date_imported timestamp,	
 	            	date date,
@@ -80,7 +80,7 @@ try:
                 	);
 
 				/* insert into target table*/               
-				insert into covid.covid_caso
+				insert into covid.caso
 				select  current_timestamp as date_imported,
 				        cast(date as date),
 	    				state,
@@ -95,10 +95,10 @@ try:
 	    				city_ibge_code,
 	    				confirmed_per_100k_inhabitants,
 	    				death_rate 
-				from 	public.covid_caso;
+				from 	public.caso;
 
 				/* drop stage table */
-				drop table public.covid_caso;
+				drop table public.caso;
             	""")
 	conn.commit()
 	conn.close()
