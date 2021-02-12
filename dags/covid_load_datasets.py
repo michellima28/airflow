@@ -17,10 +17,17 @@ with DAG(
    ) as dag:
 
    t1 = BashOperator(
-   task_id='covid_caso',
+   task_id='caso',
    bash_command="""
    cd ~/airflow/dags/etl_scripts/
    python3 covid_caso.py
    """)
 
-t1
+   t2 = BashOperator(
+   task_id='boletim',
+   bash_command="""
+   cd ~/airflow/dags/etl_scripts/
+   python3 covid_boletim.py
+   """)
+
+t1 >> t2
