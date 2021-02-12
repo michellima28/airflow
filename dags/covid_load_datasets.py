@@ -30,4 +30,11 @@ with DAG(
    python3 covid_boletim.py
    """)
 
-t1 >> t2
+   t3 = BashOperator(
+   task_id='obito_cartorio',
+   bash_command="""
+   cd ~/airflow/dags/etl_scripts/
+   python3 covid_obito_cartorio.py
+   """)
+
+t1 >> t2 >> t3
